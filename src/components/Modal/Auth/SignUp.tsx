@@ -104,7 +104,8 @@ const SignUp: FC = () => {
         bg="gray.50"
       />
       <Text textAlign="center" color="red" fontSize="10pt">
-        {error || FIREBASE_ERROR[signUpError?.message as keyof typeof FIREBASE_ERROR]}
+        {error ||
+          FIREBASE_ERROR[signUpError?.message as keyof typeof FIREBASE_ERROR]}
       </Text>
       <Flex justify="center" gap={2} m={2}>
         <Button width="100%" type="submit" isLoading={loading}>
