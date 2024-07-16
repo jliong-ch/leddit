@@ -1,7 +1,7 @@
 import { Button, ButtonGroup, Flex } from "@chakra-ui/react";
 import { FC } from "react";
 import AuthButtons from "./AuthButtons";
-import AuthModal from "../../Modal/AuthModal";
+import AuthModal from "../../Modal/Auth/AuthModal";
 
 interface RightContentProps {}
 

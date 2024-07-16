@@ -28,7 +28,7 @@ const AuthButtons: FC = () => {
         width={{ base: "7em", md: "8em" }}
         mr={2}
         onClick={() => {
-          setAuthModalState({ open: true, view: "login" });
+          setAuthModalState({ open: true, view: "signup" });
         }}
       >
         Sign Up
