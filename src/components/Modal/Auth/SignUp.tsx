@@ -1,5 +1,6 @@
 import { authModalState } from "@/src/atoms/authModalAtom";
 import { auth } from "@/src/firebase/clientApp";
+import { FIREBASE_ERROR } from "@/src/firebase/errors";
 import { Button, Flex, Input, Text } from "@chakra-ui/react";
 import { FC, FormEvent, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -28,6 +29,10 @@ const SignUp: FC = () => {
     if (error) setError("");
     if (signUpForm.confirmPassword !== signUpForm.password) {
       setError("Passwords do not match");
+      return;
+    }
+    if (signUpForm.password.length < 6) {
+      setError("Password needs to have 5 or more letters");
       return;
     }
     createUserWithEmailAndPassword(signUpForm.email, signUpForm.password);
@@ -98,8 +103,8 @@ const SignUp: FC = () => {
         }}
         bg="gray.50"
       />
-      <Text textAlign="center" color="red">
-        {error}
+      <Text textAlign="center" color="red" fontSize="10pt">
+        {error || FIREBASE_ERROR[signUpError?.message as keyof typeof FIREBASE_ERROR]}
       </Text>
       <Flex justify="center" gap={2} m={2}>
         <Button width="100%" type="submit" isLoading={loading}>
