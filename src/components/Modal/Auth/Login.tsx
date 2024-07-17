@@ -15,13 +15,9 @@ const Login: FC<LoginProps> = () => {
     password: "",
   });
   const [modalState, setModalState] = useRecoilState(authModalState);
-  const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    loginError,
-  ] = useSignInWithEmailAndPassword(auth);
-  
+  const [signInWithEmailAndPassword, user, loading, loginError] =
+    useSignInWithEmailAndPassword(auth);
+
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginForm((prev) => ({
       ...prev,
@@ -30,7 +26,7 @@ const Login: FC<LoginProps> = () => {
   };
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
-    
+
     if (error) setError("");
     signInWithEmailAndPassword(loginForm.email, loginForm.password);
   };
@@ -80,7 +76,8 @@ const Login: FC<LoginProps> = () => {
         bg="gray.50"
       />
       <Text textAlign="center" color="red" fontSize="10pt">
-        {error || FIREBASE_ERROR[loginError?.message as keyof typeof FIREBASE_ERROR]}
+        {error ||
+          FIREBASE_ERROR[loginError?.message as keyof typeof FIREBASE_ERROR]}
       </Text>
       <Flex justify="center" gap={2} m={2}>
         <Button width="100%" type="submit">
