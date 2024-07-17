@@ -9,7 +9,6 @@ import { useRecoilState } from "recoil";
 interface LoginProps {}
 
 const Login: FC<LoginProps> = () => {
-  const [error, setError] = useState("");
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -27,7 +26,6 @@ const Login: FC<LoginProps> = () => {
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    if (error) setError("");
     signInWithEmailAndPassword(loginForm.email, loginForm.password);
   };
 
@@ -76,8 +74,8 @@ const Login: FC<LoginProps> = () => {
         bg="gray.50"
       />
       <Text textAlign="center" color="red" fontSize="10pt">
-        {error ||
-          FIREBASE_ERROR[loginError?.message as keyof typeof FIREBASE_ERROR]}
+        {FIREBASE_ERROR[loginError?.message as keyof typeof FIREBASE_ERROR]}
+        {/* {loginError?.message} */}
       </Text>
       <Flex justify="center" gap={2} m={2}>
         <Button width="100%" type="submit">
