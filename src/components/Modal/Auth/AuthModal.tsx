@@ -8,7 +8,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { FC, useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -16,6 +16,7 @@ import AuthInputs from "./AuthInputs";
 import OAuthButtons from "./OAuthButtons";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/src/firebase/clientApp";
+import ResetPassword from "./ResetPassword";
 
 interface AuthModalProps {}
 
@@ -36,7 +37,7 @@ const AuthModal: FC<AuthModalProps> = () => {
 
   return (
     <>
-      <Modal isOpen={modalState.open} onClose={handleClose}>
+      <Modal isOpen={modalState.open} onClose={handleClose} size="lg">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader textAlign="center">
@@ -59,16 +60,21 @@ const AuthModal: FC<AuthModalProps> = () => {
               width="70%"
               // border="1px solid red"
             >
-              <OAuthButtons />
-              <Flex width="100%" align="center">
-                <Divider />
-                <Text color="gray.500" fontWeight={700} padding={4}>
-                  OR
-                </Text>
-                <Divider />
-              </Flex>
-              <AuthInputs />
-              {/* <ResetPassword /> */}
+              {modalState.view === "login" || modalState.view === "signup" ? (
+                <>
+                  <OAuthButtons />
+                  <Flex width="100%" align="center">
+                    <Divider />
+                    <Text color="gray.500" fontWeight={700} padding={4}>
+                      OR
+                    </Text>
+                    <Divider />
+                  </Flex>
+                  <AuthInputs />
+                </>
+              ) : (
+                <ResetPassword />
+              )}
             </Flex>
           </ModalBody>
         </ModalContent>
