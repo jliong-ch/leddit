@@ -6,7 +6,7 @@ import AuthModal from "../../Modal/Auth/AuthModal";
 import AuthButtons from "./AuthButtons";
 
 interface RightContentProps {
-  user?: User;
+  user?: User | null;
 }
 
 const RightContent: FC<RightContentProps> = ({ user }) => {

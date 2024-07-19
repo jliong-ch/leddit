@@ -7,7 +7,7 @@ const OAuthButtons: FC = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
   return (
-    <Flex direction="column" width="100%" mb={4}>
+    <Flex direction="column" width="100%" >
       <Button variant="oauth" mb="10px" onClick={() => signInWithGoogle()}>
         <Image src="/images/googlelogo.png" height="1.5em" mr={4} />
         Continue With Google
