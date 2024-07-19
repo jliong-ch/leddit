@@ -94,6 +94,22 @@ const Login: FC<LoginProps> = () => {
           Cancel
         </Button>
       </Flex>
+      <Flex fontSize="9pt" justifyContent="center" mb={2}>
+        <Text mr={1}>Forgot password?</Text>
+        <Text
+          color="blue.500"
+          fontWeight={700}
+          cursor="pointer"
+          onClick={() => {
+            setModalState({
+              ...modalState,
+              view: "resetPassword",
+            });
+          }}
+        >
+          RESET PASSWORD
+        </Text>
+      </Flex>
       <Flex fontSize="9pt" justifyContent="center">
         <Text mr={1}>New here?</Text>
         <Text
