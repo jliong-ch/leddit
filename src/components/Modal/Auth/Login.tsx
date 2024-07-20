@@ -78,7 +78,7 @@ const Login: FC<LoginProps> = () => {
         {/* {loginError?.message} */}
       </Text>
       <Flex justify="center" gap={2} m={2}>
-        <Button width="100%" type="submit">
+        <Button width="100%" type="submit" isLoading={loading}>
           Log In
         </Button>
         <Button
