@@ -14,7 +14,7 @@ const RightContent: FC<RightContentProps> = ({ user }) => {
   return (
     <>
       <AuthModal />
-      <Flex justify="center" align="center">
+      <Flex align="center">
         {user ? (
           // <Button onClick={() => signOut(auth)}>Log Out</Button>
           <Icons />
